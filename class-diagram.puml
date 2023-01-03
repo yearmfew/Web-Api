@@ -1,0 +1,155 @@
+@startuml "Class Diagram"
+
+class User <<Entity>> {
+    + Username: String
+    + Firstname: String
+    + Lastname: String
+    + Roles: [Role]
+}
+
+class Role <<Entitiy>>{
+    + roleId: String
+    + roleName: String
+    + roleCode: String
+    + description: String
+}
+
+class Auth <<Entity>> {
+    + userId: String
+    + email: String
+    + password: String
+    + login()
+    + registration()
+}
+
+class Student <<Entity>> {
+    + Course: String
+    + ResearchConcept: ResearchConcept
+}
+
+class Teacher <<Entitiy>>{
+    + Course: Course
+    + ResearchConcept: ResearchConcept
+    + AddResearchDesign() // Permission
+    + AddResearchStrategy() // Permission
+    + AddResearchMethodsAndTechniques() // Permission
+}
+
+class Course <<Entitiy>>{
+    + Title: String
+    + Description: String
+    + ResearchDesign: [ResearchDesign]
+    + ResearchStrategy: [ResearchStrategy]
+    + ResearchMethodesAndTechniques: [ResearchMethodesAndTechniques]
+    + CourseMaterial: Attachment 
+}
+class ResearchDesign <<Entitiy>>{
+    + Name: String
+    + Description: String
+    + Visualisation: Image
+}
+
+class ResearchStrategy <<Entity>>{
+    + Name: String
+    + Description: String
+    + Visualisation: Image
+}
+
+class ResearchMethodesAndTechniques <<Entitiy>>{
+    + Name: String
+    + Description: String
+    + Visualisation: Image
+}
+
+class ResearchConcept <<Entitiy>>{
+    + Title: String
+    + Description: String
+    + DateCreated: Datetime
+    + DateLastModified: Datetime
+    + Changelog: VOUD
+    + Creator: User
+    + CoCreators: [User] // Student or teacher
+    + Canvas: Canvas
+    + Attachment: [Attachment]
+    + AttachmentVisibility: Boolean
+}
+
+class Canvas <<Entitiy>> {
+    + FieldGroup: [FieldGroup]
+}
+
+class FieldGroup <<Entitiy>> {
+    + Title: String
+    + Description: String
+    + Field: [Field]
+}
+
+class Field <<Entitiy>> {
+    + Title: String
+    + Description: String
+    + Checklist: String
+    + GuidingQuestions: [GuidingQuestion]
+    + SupportMethods: [SupportMethod]
+    + SubFields: [Field]
+    + ExplanationVideo: ExplanationVideo
+    + FieldExample: FieldExample
+    + Attachment: Attachment
+}
+
+class SupportMethod <<Entitiy>> {
+    + Title: String
+    + Description: String
+    + Goal: String
+    + Steps: String
+    + Example: String
+    + InputConditions: String
+    + Field: Field
+}
+
+class ExplanationVideo <<Entitiy>>{
+    + Video: Video
+}
+
+class FieldExample <<Entitiy>> {
+    + Name: String
+    + Description: String
+    + Visualisation: Image 
+}
+
+class GuidingQuestion <<Entitiy>>{
+    + Question: String
+}
+
+class Attachment <<Entitiy>> {
+    + Notes: String
+    + Url: String 
+    + Type: Text, Image, Audio, Video // To be changed
+}
+
+class Tutorial <<Entitiy>>{
+    + Field: [Field]
+}
+
+
+Student -up-|> User
+Teacher -up-|> User
+User "1"--"1..n" Role
+User "1..n" -- "1" Course
+User "1..n" -- "1..n" ResearchConcept
+Course "1..n" -- "1..n" ResearchDesign
+Course "1..n" -- "1..n" ResearchStrategy
+Course "1..n" -- "1..n" ResearchMethodesAndTechniques
+ResearchConcept "1" -- "1" Canvas
+FieldGroup "1." -- "1..n" Field
+ResearchConcept "1." -- "1..n" Attachment
+Field "1." -- "1..n" Attachment
+Field "1." o-- "1..n" SupportMethod
+Field "1." o-- "1..n" FieldExample
+Field "1." o-- "1..n" ExplanationVideo
+Field "1." o-- "1..n" GuidingQuestion
+
+
+
+
+
+@enduml

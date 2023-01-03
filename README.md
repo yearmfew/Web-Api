@@ -1,2 +1,4 @@
 # thesis-designer
-Thesis Designer Web App
+Thesis Designer 2.0,  a web-based application
+
+
