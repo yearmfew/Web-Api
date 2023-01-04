@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const attachment = require("./attachment")
 
 const ResearchConcept = new mongoose.Schema({
     title: String,
@@ -6,7 +7,12 @@ const ResearchConcept = new mongoose.Schema({
     dateCreated: Date,
     dateLastModified: Date,
     changelog: String, // ??
-    attachmentVisibility: Boolean
+    attachmentVisibility: Boolean,
+    attachment: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "AttachmentModel",
+        autopopulate: { maxDepth: 2 }
+    }],
 
 },
     { collection: "research-concepts" }
