@@ -1,7 +1,6 @@
 const mongoose = require("mongoose")
-const attachment = require("./attachment")
 
-const ResearchConcept = new mongoose.Schema({
+const ResearchConcepSchema = new mongoose.Schema({
     title: String,
     description: String,
     dateCreated: Date,
@@ -18,6 +17,6 @@ const ResearchConcept = new mongoose.Schema({
     { collection: "research-concepts" }
 )
 
-ResearchConcept.plugin(require('mongoose-autopopulate'))
+ResearchConcepSchema.plugin(require('mongoose-autopopulate'))
 
-module.exports = mongoose.model("ResearchConceptModel", ResearchConcept)
+module.exports = mongoose.model("ResearchConceptModel", ResearchConcepSchema)

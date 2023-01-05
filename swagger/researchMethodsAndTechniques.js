@@ -29,8 +29,8 @@
 /**
  * @swagger
  * tags:
- *  name: researchMethodsAndTechniquess
- *  description: The researchMethodsAndTechniquess Api
+ *  name: ResearchMethodsAndTechniques
+ *  description: The Research Methods And Techniques Api
  */
 
 /**
