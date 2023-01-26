@@ -10,9 +10,7 @@ require("./mongo-connection")
 require("./routes/routers")(app)
 require("./swagger")(app)
 
-app.get("/", (req, res) => {
-    res.send(`Welcome to Thesis Designer. The Front End will be added. Link for the api: http://127.0.0.1:${PORT}/api-docs/`)
-})
+require("./corsPolicy")(app)
 
 app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`)
