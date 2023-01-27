@@ -2,7 +2,6 @@
 import { mapActions, mapState } from "vuex";
 export default {
   name: "UserDetailView",
-
   computed: {
     ...mapState("UserDetail", ["user"]),
   },
@@ -23,11 +22,11 @@ export default {
 
 <template>
   <div class="container">
-    User Details here..
+    <h1>{{ $t("userDetail.title") }}</h1>
     <ul>
-      <li>firstname: {{ user.firstname }}</li>
-      <li>lastname: {{ user.lastname }}</li>
-      <li>title: {{ user.title }}</li>
+      <li>{{ $t("userDetail.firstname") }}: {{ user.firstname }}</li>
+      <li>{{ $t("userDetail.lastname") }}: {{ user.lastname }}</li>
+      <li>{{ $t("userDetail.title") }}: {{ user.title }}</li>
     </ul>
   </div>
 </template>
