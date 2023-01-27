@@ -1,0 +1,8 @@
+{
+  "userDetail": {
+    "title": "Nutzer Data",
+    "firstname": "Vorname",
+    "lastname": "Nachname",
+    "userTitle": "Titel"
+  }
+}
