@@ -1,5 +1,6 @@
-# thesis-designer
-Thesis Designer 2.0,  a web-based application
+# Web-Api
+Web API with Nodejs and Express. 
+Swagger is used as documentation.
 
 ## Project setup
 ```
